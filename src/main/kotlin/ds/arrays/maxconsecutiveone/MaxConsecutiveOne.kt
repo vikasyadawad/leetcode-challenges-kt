@@ -1,7 +1,9 @@
 package ds.arrays.maxconsecutiveone
 
+import kotlin.math.max
+
 object MaxConsecutiveOne {
-    fun findMaxConsecutiveOnes(nums: IntArray): Int? {
+    fun solutionOne(nums: IntArray): Int? {
         var maxCount = 0
         var count = 0
         nums.forEach {
@@ -12,5 +14,16 @@ object MaxConsecutiveOne {
             }
         }
         return Math.max(maxCount, count)
+    }
+
+    fun solutionTwo(nums: IntArray): Int {
+        var maxOnes = 0
+        var maxHere = 0
+        nums.forEach {
+            maxHere = if (it == 0) 0 else maxHere + 1
+            maxOnes = max(maxOnes, maxHere)
+        }
+
+        return maxOnes
     }
 }
